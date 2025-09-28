@@ -1,33 +1,49 @@
-"use client ";
+"use client";
+
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Spotlight } from "../components/ui/Spotlight";
+import Skipertimer from "@/components/ui/skipertimer";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export function SpotlightPreview() {
   return (
-    <div className="relative flex h-[40rem] w-full overflow-hidden rounded-md bg-black/[0.96] antialiased md:items-center md:justify-center">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black/[0.96] px-6 py-16 text-white antialiased md:px-12">
+      {/* animated grid + spotlight background */}
       <div
         className={cn(
-          "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
+          "pointer-events-none absolute inset-0 [background-size:40px_40px]",
           "[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
         )}
       />
-
       <Spotlight
         className="-top-40 left-0 md:-top-20 md:left-60"
         fill="orange"
       />
-      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
-        <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl">
-          This creation is <br />
-          under development
-        </h1>
-        <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300">
-          Great things take time.
-          <br />
-          Creativity grows best when patience guides it.
-        </p>
+
+      {/* content */}
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-16">
+        {/* LEFT – heading + copy + CTA */}
+        <div className="flex flex-col gap-5">
+          <h1 className="bg-gradient-to-br from-white to-neutral-400 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
+            Data Connect
+          </h1>
+
+          <p className="max-w-lg text-base text-neutral-300 sm:text-lg">
+            Join the biggest data-science gathering of the year. Two power-days
+            of talks, workshops and networking with industry leaders — all
+            designed to level-up your data game.
+          </p>
+
+          <button className="mt-3 w-fit rounded-lg bg-orange-500 px-6 py-3 font-semibold text-black shadow-lg transition hover:bg-orange-400">
+            Register for the event
+          </button>
+        </div>
+
+        {/* RIGHT – large countdown */}
+        <div className="flex justify-end">
+          <Skipertimer />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
